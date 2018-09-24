@@ -1,32 +1,11 @@
 // Let's make it functional!
 
-//Take input
-function monthValue() {
-	var input = document.getElementById("month").value;
-	console.log(input);
-}
-
-function princBal() {
-	var input = document.getElementById("PB").value;
-	console.log(input);
-}
-
-function intRate() {
-	var input = document.getElementById("IR").value;
-	console.log(input);
-}
-
-function monthPay() {
-	var input = document.getElementById("MP").value;
-	console.log(input);
-}
-
-function days() {
-	var input = document.getElementById("days").value;
-	console.log(input);
-}
+//Declare Variables:
 
 
+$("#month-button").click(function() {
+	console.log(month);
+});
 
 // Calculate with inputs
 
@@ -74,9 +53,34 @@ function int() {
 
 $("#button").click(function() {
 	int();
-	toTable();
 });
 
+
+// Next step - Auto generate on the "next" button 
+
+var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+
+$("#next").click(function() {
+
+	// auto populate the next month: 
+
+	var monthInput = document.getElementById("month").value;
+
+
+	for (let i = 0; i < months.length; i++ ) {
+		if (monthInput.toLowerCase() === months[i]) {
+			nextMonth = months[i+1];
+			document.getElementById("month").value = nextMonth;
+
+		}
+	}
+
+
+
+
+
+});
 
 
 
