@@ -5,6 +5,8 @@ $(document).ready(function() {
 });
 
 
+// STEP ONE ==================================================================================== //
+
 // Use the formula to calculate the new balance:
 
 function findNB() {
@@ -53,8 +55,10 @@ $("#button").click(function() {
 });
 
 
+// STEP TWO ==================================================================================== //
 
-// Next step - Auto generate on the "next" button 
+
+// Next step: auto populate appropriate fields when the "next" button is clicked
 
 
 var monthOb = [
@@ -71,10 +75,6 @@ var monthOb = [
 	{month: 'november', days:30},
 	{month: 'december', days:31}
 ];
-
-
-var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-
 
 
 // When you click "next", do the following: 
@@ -97,7 +97,7 @@ $("#next").click(function() {
 	}	
 
 
-	// auto populate PB:
+	// auto populate the Principal Balance:
 
 	document.getElementById("PB").value = findNB();
 

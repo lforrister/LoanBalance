@@ -1,79 +1,77 @@
 <!DOCTYPE HTML>
-<html lang = "en">
+<html lang="en">
+
 <head>
-  <!-- basic.html -->
-  <title>Balance Test</title>
-  <meta charset = "UTF-8" />
-
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-
+    <!-- basic.html -->
+    <title>Balance Test</title>
+    <meta charset="UTF-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
 </head>
+
 <body>
-
-  <div class="container">
-    <h1>Balance Test</h1>
-
-
-
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Month:</label>
-        <input type="email" class="form-control" id="month" aria-describedby="emailHelp" placeholder="Month">
-      </div> 
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Principal Balance:</label>
-        <input type="email" class="form-control" id="PB" aria-describedby="emailHelp" placeholder="Principal Balance">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Interest Rate</label>
-        <input type="email" class="form-control" id="IR" aria-describedby="emailHelp" placeholder="Interest Rate">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Monthly Payment</label>
-        <input type="email" class="form-control" id="MP" aria-describedby="emailHelp" placeholder="Monthly Payment">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Days in month</label>
-        <input type="email" class="form-control" id="days" aria-describedby="emailHelp" placeholder="Days in month">
-      </div>
-
-     </form>
-
-    <button type="button" class="btn btn-primary" id="button">Submit</button>
-
-
-    <p> </p>
-
-
-    <table class="table">
-      <thead> 
-        <tr>
-          <th scope="col"> Month </th>
-          <th scope="col"> Ending Balance </th>
-        </tr>
-      </thead>
-
-      <tbody id="myTable">
-
-      </tbody>
-
-    </table>
-
-    <button type="button" class="btn btn-primary" id="next">Next</button>
-
-
-  </div>
-
-
-
-<script src="balance.js"></script>
-
+    <div class="container">
+        <h1>Balance Test</h1>
+        <form>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Month:</label>
+                        <input type="email" class="form-control" id="month" aria-describedby="emailHelp" placeholder="Month">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" id="year-form">
+                        <label for="exampleInputEmail1">Year:</label>
+                        <input type="email" class="form-control" id="year" aria-describedby="emailHelp" placeholder="Year">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Principal Balance:</label>
+                        <input type="email" class="form-control" id="PB" aria-describedby="emailHelp" placeholder="Principal Balance">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Interest Rate</label>
+                        <input type="email" class="form-control" id="IR" aria-describedby="emailHelp" placeholder="Interest Rate">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Monthly Payment</label>
+                        <input type="email" class="form-control" id="MP" aria-describedby="emailHelp" placeholder="Monthly Payment">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Days in month</label>
+                        <input type="email" class="form-control" id="days" aria-describedby="emailHelp" placeholder="Days in month">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="button">Submit</button>
+        </form>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"> Month </th>
+                    <th scope="col"> Ending Balance </th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="next">Next</button>
+    </div>
+    <script src="balance.js"></script>
 </body>
+
 </html>
