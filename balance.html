@@ -5,6 +5,7 @@
     <!-- basic.html -->
     <title>Balance Test</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css"> 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -13,7 +14,9 @@
 
 <body>
     <div class="container">
-        <h1>Balance Test</h1>
+        <h1>Balance Test</h1> <br>
+
+        <!-- INITIAL FORM ======================================================================================= --> 
         <form>
             <div class="row">
                 <div class="col-4">
@@ -57,21 +60,59 @@
             </div>
             <button type="button" class="btn btn-primary" id="button">Submit</button>
         </form>
+
+
         <br>
         <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"> Month </th>
-                    <th scope="col"> Ending Balance </th>
-                </tr>
-            </thead>
-            <tbody id="myTable">
-            </tbody>
-        </table>
+
+
+        <!-- RESULTS TABLE ======================================================================================= --> 
+
+        <!-- LEFT SIDE --> 
+
+        <div class="row">
+          <div class="col-6">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="heading" scope="col"> Month </th>
+                        <th class="heading" scope="col"> Ending Balance </th>
+                    </tr>
+                </thead>
+                <tbody id="tableLeft">
+                </tbody>
+            </table>
+
+          </div>
+
+        <!-- RIGHT SIDE --> 
+
+          <div class="col-6">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="heading" scope="col"> Month </th>
+                        <th class="heading" scope="col"> Ending Balance </th>
+                    </tr>
+                </thead>
+                <tbody id="tableRight">
+                </tbody>
+            </table>
+            
+          </div>
+        </div>
+
         <button type="button" class="btn btn-primary" id="next">Next</button>
+
+       <!-- ======================================================================================================== --> 
+
+
     </div>
+
     <script src="balance.js"></script>
+
 </body>
 
 </html>

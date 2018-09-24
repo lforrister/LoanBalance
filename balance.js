@@ -4,6 +4,22 @@ $(document).ready(function() {
 	console.log("TEST");
 });
 
+var monthOb = [
+	{month: 'january', days:31},
+	{month: 'february', days:28},
+	{month: 'march', days: 31},
+	{month: 'april', days:30},
+	{month: 'may', days:31},
+	{month: 'june', days:30},
+	{month: 'july', days:31},
+	{month: 'august', days:31},
+	{month: 'september', days:30},
+	{month: 'october', days:31},
+	{month: 'november', days:30},
+	{month: 'december', days:31}
+];
+
+	var monthArray = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
 // STEP ONE ==================================================================================== //
 
@@ -38,12 +54,24 @@ function toTable() {
 
 	//get the value of monthvalue 
 	var monthInput = document.getElementById("month").value;
+	console.log("The monthInput is: " + monthInput);
 
 
-	//append to table 
+	//append to table (left or right, depending on if the index is even or odd)
 
-	var newRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
-	$("#myTable").append(newRow);
+	var even = monthArray.indexOf(monthInput.toLowerCase());
+	console.log("The index is: " + even);
+
+	if (even % 2 === 0) {
+		console.log("It's a left month!");
+		var leftRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
+		$("#tableLeft").append(leftRow);
+	} else {
+		console.log("It's a right month!");
+		var rightRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
+		$("#tableRight").append(rightRow);
+	}
+
 
 };
 
@@ -59,22 +87,6 @@ $("#button").click(function() {
 
 
 // Next step: auto populate appropriate fields when the "next" button is clicked
-
-
-var monthOb = [
-	{month: 'january', days:31},
-	{month: 'february', days:28},
-	{month: 'march', days: 31},
-	{month: 'april', days:30},
-	{month: 'may', days:31},
-	{month: 'june', days:30},
-	{month: 'july', days:31},
-	{month: 'august', days:31},
-	{month: 'september', days:30},
-	{month: 'october', days:31},
-	{month: 'november', days:30},
-	{month: 'december', days:31}
-];
 
 
 // When you click "next", do the following: 
