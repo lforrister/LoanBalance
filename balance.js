@@ -1,15 +1,10 @@
 // Let's make it functional!
 
-//Declare Variables:
 
 
-$("#month-button").click(function() {
-	console.log(month);
-});
+// Use the formula to calculate the new balance:
 
-// Calculate with inputs
-
-function int() {
+function findNB() {
 	var interest1 = document.getElementById("PB").value * document.getElementById("IR").value;
 	console.log(interest1);
 	var int2 = interest1 / 365;
@@ -28,11 +23,13 @@ function int() {
 	var MP = document.getElementById("MP").value;
 	var NB = (parseFloat(IB) - parseFloat(MP));
 	console.log(NB);
+	return NB;
+
+}
 
 
-
-	// Step Two: Display It!
-
+// Append the month and new balance to the table:
+function toTable() {
 
 	//get the value of monthvalue 
 	var monthInput = document.getElementById("month").value;
@@ -40,20 +37,18 @@ function int() {
 
 	//append to table 
 
-	var newRow = "<tr><td>" + monthInput + "</td><td>" + NB + "</td></tr>";
+	var newRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
 	$("#myTable").append(newRow);
 
 };
 
 
-
-
-
-// Put it all together
+// On "submit" button, trigger earlier functions to append new row to table
 
 $("#button").click(function() {
-	int();
+	toTable();
 });
+
 
 
 // Next step - Auto generate on the "next" button 
@@ -79,6 +74,8 @@ $("#next").click(function() {
 	}
 
 
+
+	document.getElementById("PB").value = findNB();
 
 
 
