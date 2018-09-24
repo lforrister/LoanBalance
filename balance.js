@@ -1,5 +1,8 @@
 // Let's make it functional!
 
+$(document).ready(function() {
+	console.log("TEST");
+});
 
 
 // Use the formula to calculate the new balance:
@@ -53,32 +56,50 @@ $("#button").click(function() {
 
 // Next step - Auto generate on the "next" button 
 
+
+var monthOb = [
+	{month: 'january', days:31},
+	{month: 'february', days:28},
+	{month: 'march', days: 31},
+	{month: 'april', days:30},
+	{month: 'may', days:31},
+	{month: 'june', days:30},
+	{month: 'july', days:31},
+	{month: 'august', days:31},
+	{month: 'september', days:30},
+	{month: 'october', days:31},
+	{month: 'november', days:30},
+	{month: 'december', days:31}
+];
+
+
 var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
 
+
+// When you click "next", do the following: 
 $("#next").click(function() {
 
-	// auto populate the next month: 
+	// auto populate the next month and days in month from monthOb object:
 
-	var monthInput = document.getElementById("month").value;
+	var monthInput = document.getElementById("month").value; 
 
-
-	for (let i = 0; i < 11; i++ ) {
-		if (monthInput.toLowerCase() === months[i]) {
-			nextMonth = months[i+1];
+	for (let i = 0; i < 11; i ++) {
+		if (monthInput.toLowerCase() === monthOb[i].month) {
+			nextMonth = monthOb[i+1].month;
 			document.getElementById("month").value = nextMonth;
-
+			nextDays = monthOb[i+1].days;
+			document.getElementById("days").value = nextDays;
 		} else if (monthInput.toLowerCase() === 'december') {
 			document.getElementById("month").value = 'january';
+			document.getElementById("days").value = 31;
 		}
-	}
+	}	
 
 
+	// auto populate PB:
 
 	document.getElementById("PB").value = findNB();
-
-
-
 
 
 
