@@ -68,13 +68,18 @@ $("#next").click(function() {
 	var monthInput = document.getElementById("month").value;
 
 
-	for (let i = 0; i < months.length; i++ ) {
+	for (let i = 0; i < 11; i++ ) {
 		if (monthInput.toLowerCase() === months[i]) {
 			nextMonth = months[i+1];
 			document.getElementById("month").value = nextMonth;
 
+		} else if (monthInput.toLowerCase() === 'december') {
+			document.getElementById("month").value = 'january';
 		}
 	}
+
+
+
 
 
 
