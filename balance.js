@@ -1,8 +1,7 @@
 // Let's make it functional!
 
-$(document).ready(function() {
-	console.log("TEST");
-});
+
+// Declare global variables
 
 var monthOb = [
 	{month: 'january', days:31},
@@ -19,7 +18,8 @@ var monthOb = [
 	{month: 'december', days:31}
 ];
 
-	var monthArray = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+var count = 0;
+
 
 // STEP ONE ==================================================================================== //
 
@@ -54,15 +54,12 @@ function toTable() {
 
 	//get the value of monthvalue 
 	var monthInput = document.getElementById("month").value;
-	console.log("The monthInput is: " + monthInput);
-
 
 	//append to table (left or right, depending on if the index is even or odd)
 
-	var even = monthArray.indexOf(monthInput.toLowerCase());
-	console.log("The index is: " + even);
+	$(".year-heading").replaceWith("<h3>" + document.getElementById("year").value + "<h3>");
 
-	if (even % 2 === 0) {
+	if (count % 2 === 0) {
 		console.log("It's a left month!");
 		var leftRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
 		$("#tableLeft").append(leftRow);
@@ -105,8 +102,18 @@ $("#next").click(function() {
 		} else if (monthInput.toLowerCase() === 'december') {
 			document.getElementById("month").value = 'january';
 			document.getElementById("days").value = 31;
+
 		}
 	}	
+
+	if (monthInput.toLowerCase() === 'december') {
+			var year = parseInt(document.getElementById("year").value);
+			var nextYear = year + 1;
+			console.log(nextYear);
+			document.getElementById("year").value =  nextYear;
+	}
+
+	count++; 
 
 
 	// auto populate the Principal Balance:
