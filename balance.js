@@ -3,6 +3,8 @@
 
 // Declare global variables
 
+var payoffButton = document.getElementById("payoff")
+
 var monthOb = [
 	{month: 'january', days:31},
 	{month: 'february', days:28},
@@ -27,23 +29,18 @@ var count = 0;
 
 function findNB() {
 	var interest1 = document.getElementById("PB").value * document.getElementById("IR").value;
-	console.log(interest1);
 	var int2 = interest1 / 365;
-	console.log(int2);
 	var int3 = document.getElementById("days").value * int2;
-	console.log(int3);
 
 	// interest + principal balance
 
 	var PB = document.getElementById("PB").value;
 	var IB = (parseFloat(int3) + parseFloat(PB));
-	console.log(IB);
 
 	// let's find the new balance!
 
 	var MP = document.getElementById("MP").value;
 	var NB = (parseFloat(IB) - parseFloat(MP));
-	console.log(NB);
 	return NB;
 
 }
@@ -60,11 +57,9 @@ function toTable() {
 	$(".year-heading").replaceWith("<h3>" + document.getElementById("year").value + "<h3>");
 
 	if (count % 2 === 0) {
-		console.log("It's a left month!");
 		var leftRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
 		$("#tableLeft").append(leftRow);
 	} else {
-		console.log("It's a right month!");
 		var rightRow = "<tr><td>" + monthInput + "</td><td id='nbVal'>" + findNB() + "</td></tr>";
 		$("#tableRight").append(rightRow);
 	}
@@ -79,7 +74,6 @@ $("#button").click(function() {
 	toTable();
 });
 
-
 // STEP TWO ==================================================================================== //
 
 
@@ -88,8 +82,11 @@ $("#button").click(function() {
 
 // When you click "next", do the following: 
 $("#next").click(function() {
+	calculateMonth();
+});
 
-	// auto populate the next month and days in month from monthOb object:
+function calculateMonth() {
+// auto populate the next month and days in month from monthOb object:
 
 	var monthInput = document.getElementById("month").value; 
 
@@ -109,7 +106,6 @@ $("#next").click(function() {
 	if (monthInput.toLowerCase() === 'december') {
 			var year = parseInt(document.getElementById("year").value);
 			var nextYear = year + 1;
-			console.log(nextYear);
 			document.getElementById("year").value =  nextYear;
 	}
 
@@ -120,12 +116,58 @@ $("#next").click(function() {
 
 	document.getElementById("PB").value = findNB();
 
+}
 
-
+// On 'Calculate payoff', we essentially want to take a piece of the below function but do all the math inherintely.
+$("#payoff").click(function() {
+	calculatePayoff();
 });
 
 
+function calculatePayoff() {
+	const originalValue = parseInt(document.getElementById("PB").value)
+	let principal = parseInt(document.getElementById("PB").value)
+	let monthCount = 0
 
+	while (principal >= 0) {
 
+		calculateMonth()
+		principal = parseInt(document.getElementById("PB").value)
 
+		monthCount++
+	}
 
+	let totalCost = (monthCount * parseInt(document.getElementById("MP").value)) + principal
+	console.log('total cost: ', totalCost)
+	console.log('total interest: ', totalCost - originalValue)
+	
+}
+
+//If I want to manually calculate up until a certain month
+$("#manual").click(function() {
+	calculateManual()
+})
+
+function calculateManual() {
+	let principal = parseInt(document.getElementById("PB").value)
+	const currentMonth = document.getElementById("month").value;
+	const currentYear = document.getElementById("year").value;
+	const newMonth = document.getElementById("manualMonth").value;
+	const newYear = document.getElementById("manualYear").value;
+
+	//Figure out the difference in months 
+
+	let yearDifference = (newYear - currentYear) * 12
+
+	const months = monthOb.map((m => m.month))
+	const current = months.findIndex((m) => m == currentMonth)
+	const newM = months.findIndex((m) => m == newMonth)
+	const monthDifference = newM - current
+
+	const totalMonths = yearDifference + monthDifference
+
+	for (let i = 0; i < totalMonths; i ++) {
+		calculateMonth()
+		principal = parseInt(document.getElementById("PB").value)
+	}
+}
